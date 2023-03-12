@@ -18,5 +18,15 @@
     "main"
   ],
   "author": "Programacion para Aprender",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.18.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "nock": "^10.0.2",
+    "sinon": "^7.2.2",
+    "sinon-chai": "^3.3.0"
+  }
 }
