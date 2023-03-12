@@ -1,0 +1,22 @@
+{
+  "name": "proyecto-programacion-console",
+  "version": "1.0.0",
+  "description": "Proyecto de ejemplo de console.log",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/programacionparaaprender/proyecto-programacion-console.git"
+  },
+  "keywords": [
+    "git",
+    "push",
+    "-u",
+    "origin",
+    "main"
+  ],
+  "author": "Programacion para Aprender",
+  "license": "MIT"
+}
