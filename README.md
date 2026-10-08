@@ -11,7 +11,7 @@
 ## Instalación
 
 ```
-npm i custom-console-log
+npm i proyecto-programacion-console
 ```
 
 # Stencil Component Starter
