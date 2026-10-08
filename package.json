@@ -1,5 +1,5 @@
 {
-  "name": "ui-programacionparaaprender",
+  "name": "proyecto-programacion-console",
   "version": "0.0.1",
   "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
@@ -7,11 +7,11 @@
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/ui-programacionparaaprender/ui-programacionparaaprender.esm.js",
+  "unpkg": "dist/proyecto-programacion-console/proyecto-programacion-console.esm.js",
   "exports": {
     ".": {
-      "import": "./dist/ui-programacionparaaprender/ui-programacionparaaprender.esm.js",
-      "require": "./dist/ui-programacionparaaprender/ui-programacionparaaprender.cjs.js"
+      "import": "./dist/proyecto-programacion-console/proyecto-programacion-console.esm.js",
+      "require": "./dist/proyecto-programacion-console/proyecto-programacion-console.cjs.js"
     },
     "./my-component": {
       "import": "./dist/components/my-component.js",
