@@ -1,6 +1,6 @@
 {
   "name": "proyecto-programacion-console",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -54,6 +54,5 @@
     "@vitest/browser-playwright": "^4.0.0",
     "playwright": "^1.52.0",
     "vitest": "^4.0.0"
-  },
-  "license": "MIT"
+  }
 }
