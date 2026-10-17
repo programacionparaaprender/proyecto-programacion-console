@@ -13,6 +13,11 @@
       "import": "./dist/proyecto-programacion-console/proyecto-programacion-console.esm.js",
       "require": "./dist/proyecto-programacion-console/proyecto-programacion-console.cjs.js"
     },
+    "./button": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs.js"
+    },
     "./my-component": {
       "import": "./dist/components/my-component.js",
       "types": "./dist/components/my-component.d.ts"

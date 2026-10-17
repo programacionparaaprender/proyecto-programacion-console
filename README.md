@@ -16,14 +16,22 @@ npm i proyecto-programacion-console
 
 ## Uso del componente `Button`
 
-`Button` es un componente funcional JSX para usar dentro de otros componentes Stencil. Por ahora no es un elemento HTML personalizado ni se exporta como parte de la API del paquete.
+`Button` es un componente funcional JSX exportado desde `proyecto-programacion-console/button`. Puede usarse dentro del `render()` de un componente Stencil; no es un elemento HTML personalizado.
 
-Por ejemplo, desde otro archivo `.tsx` ubicado en la misma carpeta:
+Después de instalar el paquete, impórtalo junto con Stencil en un archivo `.tsx`:
 
 ```tsx
-import { Button } from './button-common';
+import { Component, h } from '@stencil/core';
+import { Button } from 'proyecto-programacion-console/button';
 
+@Component({
+  tag: 'example-page',
+})
 export class MyComponent {
+  private handleSave = () => {
+    console.log('Se hizo clic en Guardar');
+  };
+
   render() {
     return (
       <Button
@@ -32,13 +40,14 @@ export class MyComponent {
         size="large"
         backgroundColor="#2563eb"
         borderRadius="8px"
-        disabled={false}
-        onClick={() => console.log('Se hizo clic')}
+        onClick={this.handleSave}
       />
     );
   }
 }
 ```
+
+También puedes usar las propiedades predeterminadas con `<Button label="Continuar" />`.
 
 Propiedades disponibles:
 
