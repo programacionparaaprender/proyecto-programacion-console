@@ -14,9 +14,8 @@
       "require": "./dist/proyecto-programacion-console/proyecto-programacion-console.cjs.js"
     },
     "./button": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs.js"
+      "types": "./dist/components/storybook-button.d.ts",
+      "import": "./dist/components/storybook-button.js"
     },
     "./my-component": {
       "import": "./dist/components/my-component.js",

@@ -16,51 +16,64 @@ npm i proyecto-programacion-console
 
 ## Uso del componente `Button`
 
-`Button` es un componente funcional JSX exportado desde `proyecto-programacion-console/button`. Puede usarse dentro del `render()` de un componente Stencil; no es un elemento HTML personalizado.
+`Button` se publica como el Web Component `<storybook-button>`. En React se usa como un elemento personalizado, siguiendo el mismo patrón que `<my-component>`.
 
-Después de instalar el paquete, impórtalo junto con Stencil en un archivo `.tsx`:
+Importa la subruta del componente una vez en la entrada de tu aplicación para registrarlo:
 
 ```tsx
-import { Component, h } from '@stencil/core';
-import { Button } from 'proyecto-programacion-console/button';
+import 'proyecto-programacion-console/button';
 
-@Component({
-  tag: 'example-page',
-})
-export class MyComponent {
-  private handleSave = () => {
-    console.log('Se hizo clic en Guardar');
-  };
-
-  render() {
-    return (
-      <Button
-        label="Guardar"
-        primary
-        size="large"
-        backgroundColor="#2563eb"
-        borderRadius="8px"
-        onClick={this.handleSave}
-      />
-    );
-  }
+function App() {
+  return (
+    <storybook-button
+      label="Guardar"
+      primary
+      size="large"
+      background-color="#2563eb"
+      border-radius="8px"
+      onClick={() => console.log('Se hizo clic en Guardar')}
+    />
+  );
 }
 ```
 
-También puedes usar las propiedades predeterminadas con `<Button label="Continuar" />`.
+En proyectos React con TypeScript, declara `storybook-button` en los tipos JSX locales de la aplicación si React no reconoce el tag. Las propiedades predeterminadas se pueden usar con `<storybook-button label="Continuar" />`.
+
+Por ejemplo, puedes agregar esta declaración al proyecto React en `src/custom-elements.d.ts`:
+
+```ts
+import type * as React from 'react';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'storybook-button': React.HTMLAttributes<HTMLElement> & {
+        label?: string;
+        primary?: boolean;
+        size?: string;
+        'background-color'?: string;
+        'border-radius'?: string;
+        disabled?: boolean;
+        type?: 'button' | 'submit' | 'reset';
+      };
+    }
+  }
+}
+```
 
 Propiedades disponibles:
 
 | Propiedad | Tipo | Valor predeterminado | Descripción |
 | --- | --- | --- | --- |
-| `label` | `string` | Obligatoria | Texto que muestra el botón. |
+| `label` | `string` | `''` | Texto que muestra el botón. |
 | `primary` | `boolean` | `false` | Usa la clase `storybook-button--primary`; si es `false`, usa `storybook-button--secondary`. |
 | `size` | `string` | `'medium'` | Añade la clase `storybook-button--{size}`. |
-| `backgroundColor` | `string \| null` | `null` | Color de fondo en línea, si se proporciona. |
-| `borderRadius` | `string` | `'3em'` | Radio del borde en línea. |
-| `style` | `JSX` de estilos | `{}` | Estilos adicionales; `backgroundColor` y `borderRadius` prevalecen si también se especifican aquí. |
+| `backgroundColor` (`background-color` en HTML/React) | `string \| null` | `null` | Color de fondo en línea, si se proporciona. |
+| `borderRadius` (`border-radius` en HTML/React) | `string` | `'3em'` | Radio del borde en línea. |
+| `disabled` | `boolean` | `false` | Deshabilita el botón nativo. |
+| `type` | `'button' \| 'submit' \| 'reset'` | `'button'` | Tipo del botón nativo. |
 
-También acepta los atributos y eventos nativos de `<button>`, como `disabled` y `onClick`. Las clases visuales se definen en `button-component.css`.
+El evento `onClick` se puede manejar en React como en el ejemplo. Los estilos del botón se definen en `button-component.css`.
 
 # Stencil Component Starter
 

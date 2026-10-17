@@ -5,13 +5,21 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+Button web component that can be consumed by React and other frameworks.
+
 ## Properties
 
-| Property | Attribute | Description     | Type     | Default     |
-| -------- | --------- | --------------- | -------- | ----------- |
-| `first`  | `first`   | The first name  | `string` | `undefined` |
-| `last`   | `last`    | The last name   | `string` | `undefined` |
-| `middle` | `middle`  | The middle name | `string` | `undefined` |
+| Property          | Attribute          | Description | Type                              | Default    |
+| ----------------- | ------------------ | ----------- | --------------------------------- | ---------- |
+| `backgroundColor` | `background-color` |             | `string`                          | `null`     |
+| `borderRadius`    | `border-radius`    |             | `string`                          | `'3em'`    |
+| `disabled`        | `disabled`         |             | `boolean`                         | `false`    |
+| `label`           | `label`            |             | `string`                          | `''`       |
+| `primary`         | `primary`          |             | `boolean`                         | `false`    |
+| `size`            | `size`             |             | `string`                          | `'medium'` |
+| `type`            | `type`             |             | `"button" \| "reset" \| "submit"` | `'button'` |
 
 
 ----------------------------------------------

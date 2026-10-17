@@ -20,6 +20,39 @@ export namespace Components {
          */
         "middle"?: string;
     }
+    /**
+     * Button web component that can be consumed by React and other frameworks.
+     */
+    interface StorybookButton {
+        /**
+          * @default null
+         */
+        "backgroundColor": string | null;
+        /**
+          * @default '3em'
+         */
+        "borderRadius": string;
+        /**
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * @default ''
+         */
+        "label": string;
+        /**
+          * @default false
+         */
+        "primary": boolean;
+        /**
+          * @default 'medium'
+         */
+        "size": string;
+        /**
+          * @default 'button'
+         */
+        "type": 'button' | 'submit' | 'reset';
+    }
 }
 declare global {
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
@@ -28,8 +61,18 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    /**
+     * Button web component that can be consumed by React and other frameworks.
+     */
+    interface HTMLStorybookButtonElement extends Components.StorybookButton, HTMLStencilElement {
+    }
+    var HTMLStorybookButtonElement: {
+        prototype: HTMLStorybookButtonElement;
+        new (): HTMLStorybookButtonElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
+        "storybook-button": HTMLStorybookButtonElement;
     }
 }
 declare namespace LocalJSX {
@@ -47,15 +90,58 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    /**
+     * Button web component that can be consumed by React and other frameworks.
+     */
+    interface StorybookButton {
+        /**
+          * @default null
+         */
+        "backgroundColor"?: string | null;
+        /**
+          * @default '3em'
+         */
+        "borderRadius"?: string;
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * @default false
+         */
+        "primary"?: boolean;
+        /**
+          * @default 'medium'
+         */
+        "size"?: string;
+        /**
+          * @default 'button'
+         */
+        "type"?: 'button' | 'submit' | 'reset';
+    }
 
     interface MyComponentAttributes {
         "first": string;
         "middle": string;
         "last": string;
     }
+    interface StorybookButtonAttributes {
+        "primary": boolean;
+        "backgroundColor": string | null;
+        "borderRadius": string;
+        "size": string;
+        "label": string;
+        "disabled": boolean;
+        "type": 'button' | 'submit' | 'reset';
+    }
 
     interface IntrinsicElements {
         "my-component": Omit<MyComponent, keyof MyComponentAttributes> & { [K in keyof MyComponent & keyof MyComponentAttributes]?: MyComponent[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `attr:${K}`]?: MyComponentAttributes[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `prop:${K}`]?: MyComponent[K] };
+        "storybook-button": Omit<StorybookButton, keyof StorybookButtonAttributes> & { [K in keyof StorybookButton & keyof StorybookButtonAttributes]?: StorybookButton[K] } & { [K in keyof StorybookButton & keyof StorybookButtonAttributes as `attr:${K}`]?: StorybookButtonAttributes[K] } & { [K in keyof StorybookButton & keyof StorybookButtonAttributes as `prop:${K}`]?: StorybookButton[K] };
     }
 }
 export { LocalJSX as JSX };
@@ -63,6 +149,10 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.IntrinsicElements["my-component"] & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            /**
+             * Button web component that can be consumed by React and other frameworks.
+             */
+            "storybook-button": LocalJSX.IntrinsicElements["storybook-button"] & JSXBase.HTMLAttributes<HTMLStorybookButtonElement>;
         }
     }
 }

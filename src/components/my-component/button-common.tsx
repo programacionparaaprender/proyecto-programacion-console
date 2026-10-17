@@ -1,40 +1,41 @@
-import { h } from '@stencil/core';
-import type { JSXBase } from '@stencil/core/internal';
-import './button-component.css';
+import { Component, Prop, h } from '@stencil/core';
 
-export interface ButtonProps extends Omit<JSXBase.ButtonHTMLAttributes<HTMLButtonElement>, 'style'> {
-  primary?: boolean;
-  backgroundColor?: string | null;
-  borderRadius?: string;
-  size?: string;
-  label: string;
-  style?: JSXBase.ButtonHTMLAttributes<HTMLButtonElement>['style'];
+/** Button web component that can be consumed by React and other frameworks. */
+@Component({
+  tag: 'storybook-button',
+  styleUrl: 'button-component.css',
+  shadow: false,
+})
+export class Button {
+  @Prop() primary = false;
+
+  @Prop() backgroundColor: string | null = null;
+
+  @Prop() borderRadius = '3em';
+
+  @Prop() size = 'medium';
+
+  @Prop() label = '';
+
+  @Prop() disabled = false;
+
+  @Prop() type: 'button' | 'submit' | 'reset' = 'button';
+
+  render() {
+    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';
+
+    return (
+      <button
+        type={this.type}
+        class={['storybook-button', `storybook-button--${this.size}`, mode].join(' ')}
+        style={{
+          ...(this.backgroundColor && { backgroundColor: this.backgroundColor }),
+          borderRadius: this.borderRadius,
+        }}
+        disabled={this.disabled}
+      >
+        {this.label}
+      </button>
+    );
+  }
 }
-
-/** Primary UI component for user interaction */
-export const Button = ({
-  primary = false,
-  backgroundColor = null,
-  borderRadius = '3em',
-  size = 'medium',
-  label,
-  style = {},
-  ...props
-}: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
-
-  return (
-    <button
-      type="button"
-      class={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={{
-        ...style,
-        ...(backgroundColor && { backgroundColor }),
-        borderRadius,
-      }}
-      {...props}
-    >
-      {label}
-    </button>
-  );
-};
