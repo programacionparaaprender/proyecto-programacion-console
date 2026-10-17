@@ -14,6 +14,45 @@
 npm i proyecto-programacion-console
 ```
 
+## Uso del componente `Button`
+
+`Button` es un componente funcional JSX para usar dentro de otros componentes Stencil. Por ahora no es un elemento HTML personalizado ni se exporta como parte de la API del paquete.
+
+Por ejemplo, desde otro archivo `.tsx` ubicado en la misma carpeta:
+
+```tsx
+import { Button } from './button-common';
+
+export class MyComponent {
+  render() {
+    return (
+      <Button
+        label="Guardar"
+        primary
+        size="large"
+        backgroundColor="#2563eb"
+        borderRadius="8px"
+        disabled={false}
+        onClick={() => console.log('Se hizo clic')}
+      />
+    );
+  }
+}
+```
+
+Propiedades disponibles:
+
+| Propiedad | Tipo | Valor predeterminado | Descripción |
+| --- | --- | --- | --- |
+| `label` | `string` | Obligatoria | Texto que muestra el botón. |
+| `primary` | `boolean` | `false` | Usa la clase `storybook-button--primary`; si es `false`, usa `storybook-button--secondary`. |
+| `size` | `string` | `'medium'` | Añade la clase `storybook-button--{size}`. |
+| `backgroundColor` | `string \| null` | `null` | Color de fondo en línea, si se proporciona. |
+| `borderRadius` | `string` | `'3em'` | Radio del borde en línea. |
+| `style` | `JSX` de estilos | `{}` | Estilos adicionales; `backgroundColor` y `borderRadius` prevalecen si también se especifican aquí. |
+
+También acepta los atributos y eventos nativos de `<button>`, como `disabled` y `onClick`. Las clases visuales se definen en `button-component.css`.
+
 # Stencil Component Starter
 
 > This is a starter project for building a standalone Web Components using Stencil.
